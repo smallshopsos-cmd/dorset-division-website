@@ -1,0 +1,19 @@
+/* Dorset Division homepage trust bar — isolated class names to avoid theme conflicts */
+.dd-trust-bar { background:#081624; color:#eae6df; padding:34px 24px 22px; font-family:inherit; }
+.dd-trust-bar__inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+.dd-trust-bar__stat { text-align:center; display:flex; flex-direction:column; align-items:center; gap:7px; padding:0 18px; }
+.dd-trust-bar__stat + .dd-trust-bar__stat { border-left:1px solid rgba(229,182,93,.38); }
+.dd-trust-bar__stat strong { color:#e5b65d; font-family:Georgia,'Times New Roman',serif; font-size:clamp(29px,3.6vw,43px); line-height:1.1; font-weight:400; }
+.dd-trust-bar__eyebrow { color:#e5b65d; font-size:11px; letter-spacing:.13em; font-weight:600; }
+.dd-trust-bar__stat > span:last-child { font-size:13px; color:#eae6df; }
+.dd-trust-bar__footer { max-width:1100px; margin:27px auto 0; padding-top:18px; border-top:1px solid rgba(229,182,93,.24); text-align:center; font-size:12px; letter-spacing:.025em; }
+.dd-trust-bar__footer span { color:#e5b65d; margin:0 9px; }
+@media (max-width:600px) {
+  .dd-trust-bar { padding:25px 12px 18px; }
+  .dd-trust-bar__stat { padding:0 7px; gap:6px; }
+  .dd-trust-bar__stat strong { font-size:clamp(25px,7vw,34px); }
+  .dd-trust-bar__eyebrow { font-size:9px; letter-spacing:.05em; }
+  .dd-trust-bar__stat > span:last-child { font-size:11px; }
+  .dd-trust-bar__footer { font-size:11px; line-height:1.8; margin-top:20px; }
+  .dd-trust-bar__footer span { margin:0 4px; }
+}

@@ -1,0 +1,42 @@
+/* Approach page process-card animation only. */
+.approach-process .approach-animated-card {
+  position: relative;
+  overflow: hidden;
+  border:1px solid #d8c4a5;
+  border-top:2px solid #d8a65c;
+  transition: transform 420ms ease, box-shadow 420ms ease, border-color 420ms ease;
+}
+.approach-process .approach-animated-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  height: 2px; width: 100%;
+  background: linear-gradient(90deg, #b88131, #e9bd70);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 480ms ease;
+}
+.approach-process .approach-animated-card:is(:hover,:focus-visible) {
+  transform: translateY(-5px);
+  border-color: #c69a56;
+  box-shadow: 0 15px 32px rgba(8, 22, 36, .11);
+}
+.approach-process .approach-animated-card:is(:hover,:focus-visible)::before { transform: scaleX(1); }
+/* Only hide cards once JS has confirmed it is ready to observe them. */
+.approach-process.approach-process--ready .approach-animated-card {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 650ms ease, transform 650ms ease, box-shadow 420ms ease, border-color 420ms ease;
+  transition-delay: calc(var(--approach-card-index, 0) * 110ms);
+}
+.approach-process.approach-process--ready .approach-animated-card.approach-card-visible { opacity: 1; transform: translateY(0); }
+.approach-process.approach-process--ready .approach-animated-card.approach-card-visible:is(:hover,:focus-visible) { transform: translateY(-5px); }
+.approach-process.approach-process--ready .approach-animated-close { opacity: 0; transform: translateY(14px); transition: opacity 600ms ease 300ms, transform 600ms ease 300ms; }
+.approach-process.approach-process--ready .approach-animated-close.approach-card-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .approach-process .approach-animated-card, .approach-process .approach-animated-card::before,
+  .approach-process.approach-process--ready .approach-animated-card,
+  .approach-process.approach-process--ready .approach-animated-close { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+.approach-process .approach-animated-card:focus-visible{outline:2px solid #bd8b3c;outline-offset:3px}
