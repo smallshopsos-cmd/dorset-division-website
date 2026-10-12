@@ -1,9 +1,4 @@
-// Burt 2.0 — create as a NEW Cloudflare Worker, leaving the original SOS Worker untouched.
-// IMPORTANT: add your exact preview and final website origins before deploying.
-const ALLOWED_ORIGINS = new Set([
-  'https://dorset-division-business-digital.snickie-snac-2202.chatgpt.site',
-  'https://YOUR-PRIVATE-PREVIEW-DOMAIN'
-]);
+// Burt chat API served on the same origin as the Dorset Division website.
 const SYSTEM_PROMPT = `You are Burt, the Dorset Division digital assistant, helping visitors understand the business and reach Marnie when appropriate. You are not Marnie and cannot accept bookings, payments or make binding promises.
 
 Dorset Division provides business strategy, research and practical digital delivery for small businesses, creators and authors. Service areas:
@@ -24,16 +19,17 @@ function reply(body,status,origin){return new Response(JSON.stringify(body),{sta
 export default {
   async fetch(request,env){
     const origin=request.headers.get('Origin')||'';
-    if(!ALLOWED_ORIGINS.has(origin))return new Response('Origin not allowed',{status:403});
+    if(origin && origin!==new URL(request.url).origin)return new Response('Origin not allowed',{status:403});
     if(request.method==='OPTIONS')return new Response(null,{status:204,headers:headers(origin)});
     if(request.method!=='POST')return reply({error:'Method not allowed'},405,origin);
     if(!env.AI)return reply({error:'Workers AI binding AI is missing'},503,origin);
     let input;try{input=await request.json()}catch{return reply({error:'Invalid JSON'},400,origin)}
-    const message=String(input.message||'').trim();
+    if(!input || typeof input!=='object' || Array.isArray(input))return reply({error:'Invalid request body'},400,origin);
+    const message=typeof input.message==='string'?input.message.trim():'';
     if(message.length<2||message.length>1200)return reply({error:'Question must be 2–1200 characters'},400,origin);
     const page=String(input.page||'').slice(0,200);
     // Do not treat visitor-supplied site context as authoritative for pricing or policies.
-    const history=Array.isArray(input.history)?input.history.slice(-6).map(x=>({role:x.role==='assistant'?'assistant':'user',content:String(x.content||'').slice(0,1200)})):[];
+    const history=Array.isArray(input.history)?input.history.slice(-6).filter(x=>x && typeof x==='object').map(x=>({role:x.role==='assistant'?'assistant':'user',content:String(x.content||'').slice(0,1200)})):[];
     try{
       const result=await env.AI.run('@cf/meta/llama-3.1-8b-instruct-fast',{messages:[{role:'system',content:SYSTEM_PROMPT},{role:'system',content:`Visitor is on page ${page}. Do not infer page content or policies from its path.`},...history,{role:'user',content:message}],max_tokens:350,temperature:0.25});
       const raw=String(result.response||'').trim();
