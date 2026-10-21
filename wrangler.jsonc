@@ -12,5 +12,15 @@
   },
   "ai": {
     "binding": "AI"
-  }
+  },
+  "ratelimits": [
+    {
+      "name": "CONTACT_RATE_LIMITER",
+      "namespace_id": "762609521",
+      "simple": {
+        "limit": 10,
+        "period": 60
+      }
+    }
+  ]
 }
