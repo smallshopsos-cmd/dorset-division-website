@@ -36,7 +36,7 @@ a:focus-visible,button:focus-visible,.carousel-track:focus-visible{outline:3px s
 @media(max-width:760px){.hero-art{opacity:.85}.approach-hero .hero-art{opacity:.85}}
 
 /* Shared closing-section artwork across all six pages. */
-.dd-bottom-image{background:linear-gradient(110deg,rgba(7,19,33,.35),rgba(7,19,33,.10)),url('assets/botton1.png') center/cover!important}
+.dd-bottom-image{background:linear-gradient(110deg,rgba(7,19,33,.35),rgba(7,19,33,.10)),url('assets/botton1.webp') center/cover!important}
 
 /* Full-width heroes: approved artwork beneath a seamless readability gradient. */
 .hero.hero-fullbleed{isolation:isolate;background:#071624}
@@ -89,7 +89,7 @@ a:focus-visible,button:focus-visible,.carousel-track:focus-visible{outline:3px s
 
 /* Approved Services & Prices hero artwork, in the About-page split composition. */
 .services-hero{min-height:clamp(620px,78vh,820px);background:#061321;isolation:isolate}
-.services-hero::before{content:"";position:absolute;inset:0 0 0 39%;background:url('assets/services-hero-cinematic.png') center center/cover no-repeat;opacity:.98;z-index:0;animation:servicesArtworkDrift 14s ease-in-out infinite alternate}
+.services-hero::before{content:"";position:absolute;inset:0 0 0 39%;background:url('assets/services-hero-cinematic.webp') center center/cover no-repeat;opacity:.98;z-index:0;animation:servicesArtworkDrift 14s ease-in-out infinite alternate}
 .services-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#061321 0%,#061321 28%,rgba(6,19,33,.94) 39%,rgba(6,19,33,.55) 58%,rgba(6,19,33,.05) 90%);z-index:1;pointer-events:none}
 .services-hero-grid{position:relative;z-index:2;display:block;padding:105px 0}
 .services-hero-copy{width:min(560px,55%);position:relative;z-index:3}
@@ -100,7 +100,7 @@ a:focus-visible,button:focus-visible,.carousel-track:focus-visible{outline:3px s
 @media(prefers-reduced-motion:reduce){.services-hero::before{animation:none}}
 
 /* Updated cinematic Services hero: image only, all heading and CTA text remains HTML */
-.services-hero::before{inset:0;background-image:url('assets/services-hero-cinematic.png');background-size:cover;background-position:center 45%;opacity:1}
+.services-hero::before{inset:0;background-image:url('assets/services-hero-cinematic.webp');background-size:cover;background-position:center 45%;opacity:1}
 .services-hero::after{background:linear-gradient(90deg,rgba(4,13,23,.97) 0%,rgba(4,13,23,.90) 29%,rgba(4,13,23,.68) 43%,rgba(4,13,23,.14) 76%,rgba(4,13,23,.02) 100%)}
 .services-hero-copy{width:min(610px,52%)}
 .contact-section{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,.7fr);gap:clamp(30px,7vw,100px);align-items:start}
@@ -127,3 +127,6 @@ a:focus-visible,button:focus-visible,.carousel-track:focus-visible{outline:3px s
 .dd-cookie-actions{display:flex;flex-wrap:wrap;gap:9px;justify-content:flex-end}.dd-cookie-actions button{background:transparent;border:1px solid #8190a0;color:white;border-radius:5px;padding:11px 13px;cursor:pointer;font:600 12px inherit;white-space:nowrap}.dd-cookie-actions button[data-dd-cookie="accept"],.dd-cookie-actions button[data-dd-cookie="save"]{background:#c7a06a;color:#071525;border-color:#c7a06a}.dd-cookie-actions button:focus-visible,.dd-cookie-copy a:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .dd-cookie-footer-link{border:0;background:none;color:inherit;font:inherit;text-align:left;padding:0;cursor:pointer;display:block;margin-top:8px}.dd-cookie-footer-link:hover{text-decoration:underline}
 @media(max-width:760px){.dd-cookie-banner{bottom:8px;left:8px;right:8px;padding:16px;display:block;max-height:85vh;overflow:auto}.dd-cookie-actions{margin-top:15px;justify-content:stretch}.dd-cookie-actions button{flex:1 1 42%;white-space:normal}}
+
+/* Keep supporting copy readable on the navy contact panel. */
+.contact-box p,.contact-box .eyebrow{color:#e0e6eb}
