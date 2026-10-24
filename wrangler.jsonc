@@ -15,7 +15,6 @@
     "binding": "AI"
   },
   "ratelimits": [
-    { "name": "REVIEW_RATE_LIMITER", "namespace_id": "762609522", "simple": { "limit": 3, "period": 60 } },
     {
       "name": "CONTACT_RATE_LIMITER",
       "namespace_id": "762609521",
