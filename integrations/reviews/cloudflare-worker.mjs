@@ -7,9 +7,9 @@ async function verifyAccess(request,env){
   const [header,payload,signature]=token.split('.');
   const decode=s=>JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0))));
   const h=decode(header),p=decode(payload);
-  if(h.alg!=='RS256'||!h.kid||p.aud?.includes(env.ACCESS_AUD)!==true||p.iss!==env.ACCESS_TEAM_DOMAIN.replace(/\/$/,'')||p.exp*1000<Date.now()||p.nbf&&p.nbf*1000>Date.now())return false;
+  if(h.alg!=='RS256'||!h.kid||!Array.isArray(p.aud)||!p.aud.includes(env.ACCESS_AUD)||p.iss!==env.ACCESS_TEAM_DOMAIN.replace(/\/$/,'')||typeof p.exp!=='number'||p.exp*1000<=Date.now()||(typeof p.nbf==='number'&&p.nbf*1000>Date.now())||!['dorsetdivision@gmail.com'].includes(String(p.email||'').toLowerCase()))return false;
   const keys=await fetch(env.ACCESS_TEAM_DOMAIN.replace(/\/$/,'')+'/cdn-cgi/access/certs').then(r=>r.json());
-  const jwk=keys.keys.find(k=>k.kid===h.kid);
+  const jwk=Array.isArray(keys.keys)&&keys.keys.find(k=>k.kid===h.kid&&k.kty==='RSA'&&k.use==='sig');
   if(!jwk)return false;
   const key=await crypto.subtle.importKey('jwk',jwk,{name:'RSASSA-PKCS1-v1_5',hash:'SHA-256'},false,['verify']);
   return await crypto.subtle.verify('RSASSA-PKCS1-v1_5',key,Uint8Array.from(atob(signature.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0)),new TextEncoder().encode(header+'.'+payload));
@@ -28,7 +28,7 @@ export default {async fetch(request,env){
   }
   if(request.method==='POST'){
    const data=await request.json().catch(()=>null);
-   if(!data||!['approved','rejected'].includes(data.status)||typeof data.id!=='string')return json({error:'Invalid action'},400);
+   if(!data||!['approved','rejected'].includes(data.status)||typeof data.id!=='string'||!/^[0-9a-f-]{36}$/i.test(data.id))return json({error:'Invalid action'},400);
    const result=await env.REVIEWS_DB.prepare("UPDATE reviews SET status=?,reviewed_at=datetime('now') WHERE id=? AND status='pending'").bind(data.status,data.id).run();
    return json({ok:result.meta.changes===1});
   }
