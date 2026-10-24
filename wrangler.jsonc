@@ -10,10 +10,12 @@
       "/api/*"
     ]
   },
+  "d1_databases": [{ "binding": "REVIEWS_DB", "database_name": "dorset-division-reviews", "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID" }],
   "ai": {
     "binding": "AI"
   },
   "ratelimits": [
+    { "name": "REVIEW_RATE_LIMITER", "namespace_id": "762609522", "simple": { "limit": 3, "period": 60 } },
     {
       "name": "CONTACT_RATE_LIMITER",
       "namespace_id": "762609521",
