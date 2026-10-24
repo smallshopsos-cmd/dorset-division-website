@@ -10,6 +10,7 @@
       "/api/*"
     ]
   },
+  "d1_databases": [{ "binding": "REVIEWS_DB", "database_name": "dorset-division-reviews", "database_id": "a955a662-9c9f-4031-b596-09c12da07550" }],
   "ai": {
     "binding": "AI"
   },
