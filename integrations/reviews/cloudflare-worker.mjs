@@ -1,5 +1,5 @@
 const json=(data,status=200)=>Response.json(data,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
-const email=/^[^\\s@<>]+@[^\\s@<>]+\\.[^\\s@<>]+$/;
+const email=/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
 async function verifyAccess(request,env){
  const token=request.headers.get('Cf-Access-Jwt-Assertion');
  if(!token || !env.ACCESS_TEAM_DOMAIN || !env.ACCESS_AUD) return false;
@@ -7,8 +7,8 @@ async function verifyAccess(request,env){
   const [header,payload,signature]=token.split('.');
   const decode=s=>JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0))));
   const h=decode(header),p=decode(payload);
-  if(h.alg!=='RS256'||!h.kid||p.aud?.includes(env.ACCESS_AUD)!==true||p.iss!==env.ACCESS_TEAM_DOMAIN.replace(/\\/$/,'')||p.exp*1000<Date.now()||p.nbf&&p.nbf*1000>Date.now())return false;
-  const keys=await fetch(env.ACCESS_TEAM_DOMAIN.replace(/\\/$/,'')+'/cdn-cgi/access/certs').then(r=>r.json());
+  if(h.alg!=='RS256'||!h.kid||p.aud?.includes(env.ACCESS_AUD)!==true||p.iss!==env.ACCESS_TEAM_DOMAIN.replace(/\/$/,'')||p.exp*1000<Date.now()||p.nbf&&p.nbf*1000>Date.now())return false;
+  const keys=await fetch(env.ACCESS_TEAM_DOMAIN.replace(/\/$/,'')+'/cdn-cgi/access/certs').then(r=>r.json());
   const jwk=keys.keys.find(k=>k.kid===h.kid);
   if(!jwk)return false;
   const key=await crypto.subtle.importKey('jwk',jwk,{name:'RSASSA-PKCS1-v1_5',hash:'SHA-256'},false,['verify']);
@@ -42,8 +42,8 @@ export default {async fetch(request,env){
  if(request.headers.get('Origin')!==url.origin)return json({error:'Invalid origin'},403);
  if(request.headers.get('Content-Type')?.split(';')[0]!=='application/json')return json({error:'JSON required'},415);
  const ip=request.headers.get('CF-Connecting-IP');
- if(!ip||typeof env.REVIEW_RATE_LIMITER?.limit!=='function')return json({error:'Temporarily unavailable'},503);
- const limit=await env.REVIEW_RATE_LIMITER.limit({key:'review:'+ip});
+ if(!ip||typeof env.CONTACT_RATE_LIMITER?.limit!=='function')return json({error:'Temporarily unavailable'},503);
+ const limit=await env.CONTACT_RATE_LIMITER.limit({key:'review:'+ip});
  if(!limit.success)return json({error:'Please try again later.'},429);
  if(Number(request.headers.get('Content-Length')||0)>12000)return json({error:'Submission too large'},413);
  const data=await request.json().catch(()=>null);
