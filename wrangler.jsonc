@@ -3,6 +3,12 @@
   "main": "worker.mjs",
   "compatibility_date": "2026-10-12",
   "workers_dev": true,
+  // Preview policy pages without connecting to production data or sending email.
+  "previews": {
+    "vars": {
+      "CONTACT_DELIVERY_ENABLED": "false"
+    }
+  },
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
