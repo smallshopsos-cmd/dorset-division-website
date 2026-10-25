@@ -17,3 +17,12 @@ document.querySelectorAll('[data-carousel]').forEach(carousel=>{
  carousel.querySelector('[data-prev]')?.setAttribute('aria-label','Previous cards');carousel.querySelector('[data-next]')?.setAttribute('aria-label','Next cards');
  track.addEventListener('keydown',event=>{if(event.target!==track||!['ArrowLeft','ArrowRight'].includes(event.key))return;event.preventDefault();carousel.querySelector(event.key==='ArrowLeft'?'[data-prev]':'[data-next]')?.click();});
 });
+
+// Match scroll clearance to the actual header, including the expanded mobile menu.
+const siteHeader=document.querySelector('body > header');
+if(siteHeader){
+ const updateHeaderOffset=()=>document.documentElement.style.setProperty('--dd-header-offset',`${Math.ceil(siteHeader.getBoundingClientRect().height)+16}px`);
+ updateHeaderOffset();
+ if('ResizeObserver' in window)new ResizeObserver(updateHeaderOffset).observe(siteHeader);
+ else window.addEventListener('resize',updateHeaderOffset);
+}

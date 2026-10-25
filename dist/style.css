@@ -126,7 +126,15 @@ a:focus-visible,button:focus-visible,.carousel-track:focus-visible{outline:3px s
 .dd-cookie-copy{flex:1;min-width:0}.dd-cookie-copy strong{font-size:13px;letter-spacing:.13em;color:white}.dd-cookie-copy p{font-size:13px;line-height:1.55;color:#d8e0ea;margin:7px 0 0}.dd-cookie-copy a{color:#f1cb86;text-decoration:underline}.dd-cookie-details{padding-top:8px}.dd-cookie-details label{display:block;margin:10px 0;color:white;font-size:13px}.dd-cookie-details input{accent-color:#c8a268}.dd-cookie-copy .dd-cookie-small{font-size:11px;color:#b8c3cf}
 .dd-cookie-actions{display:flex;flex-wrap:wrap;gap:9px;justify-content:flex-end}.dd-cookie-actions button{background:transparent;border:1px solid #8190a0;color:white;border-radius:5px;padding:11px 13px;cursor:pointer;font:600 12px inherit;white-space:nowrap}.dd-cookie-actions button[data-dd-cookie="accept"],.dd-cookie-actions button[data-dd-cookie="save"]{background:#c7a06a;color:#071525;border-color:#c7a06a}.dd-cookie-actions button:focus-visible,.dd-cookie-copy a:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .dd-cookie-footer-link{border:0;background:none;color:inherit;font:inherit;text-align:left;padding:0;cursor:pointer;display:block;margin-top:8px}.dd-cookie-footer-link:hover{text-decoration:underline}
-@media(max-width:760px){.dd-cookie-banner{bottom:8px;left:8px;right:8px;padding:16px;display:block;max-height:85vh;overflow:auto}.dd-cookie-actions{margin-top:15px;justify-content:stretch}.dd-cookie-actions button{flex:1 1 42%;white-space:normal}}
+@media(max-width:760px){.dd-cookie-banner{bottom:8px;left:8px;right:8px;padding:16px;display:block;max-height:70dvh;overflow:auto}.dd-cookie-actions{margin-top:15px;justify-content:stretch}.dd-cookie-actions button{flex:1 1 42%;white-space:normal}}
 
 /* Keep supporting copy readable on the navy contact panel. */
 .contact-box p,.contact-box .eyebrow{color:#e0e6eb}
+
+/* Keep keyboard navigation and scrolled targets clear of the sticky site header. */
+html{scroll-padding-top:var(--dd-header-offset,110px);scroll-padding-bottom:var(--dd-cookie-offset,0px)}
+body{padding-bottom:var(--dd-cookie-offset,0px)}
+input,textarea,select,[tabindex],:target{scroll-margin-top:16px}
+.dd-skip-link{position:fixed;top:8px;left:12px;z-index:10000;padding:12px 18px;background:#f8ce81;color:#061321;font-weight:700;border:2px solid #061321;transform:translateY(-200%)}
+.dd-skip-link:focus{transform:none;outline:3px solid #fff;outline-offset:2px}
+@media print{.dd-skip-link{display:none}}
