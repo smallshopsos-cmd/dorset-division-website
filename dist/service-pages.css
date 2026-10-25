@@ -27,3 +27,43 @@
 .dd-service-home> .container>p{max-width:800px}
 @media(max-width:900px){.dd-service-related{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.dd-service-hero{padding:26px 0 56px}.dd-service-breadcrumbs{margin-bottom:34px}.dd-service-columns{grid-template-columns:1fr}.dd-service-related{grid-template-columns:1fr}.dd-service-lead{font-size:16px}.dd-service-panel{padding:24px}.dd-service-hero h1{overflow-wrap:anywhere}}
+
+/* Match the existing Services hero dimensions, image drift and mobile composition. */
+.hero.dd-service-hero{min-height:clamp(620px,78vh,820px);padding:0;background:#061321;align-items:center}
+.hero.dd-service-hero .container{padding-top:60px;padding-bottom:78px}
+.hero.dd-service-hero::before{background:linear-gradient(90deg,rgba(4,13,23,.97) 0%,rgba(4,13,23,.91) 29%,rgba(4,13,23,.68) 43%,rgba(4,13,23,.14) 76%,rgba(4,13,23,.02) 100%)}
+.dd-service-hero .dd-service-breadcrumbs{margin-bottom:36px;max-width:680px}
+.dd-service-hero-copy{width:min(610px,55%);max-width:none}
+.dd-service-hero-copy h1{font-size:clamp(3.2rem,5.7vw,6.2rem);line-height:1.06;margin:18px 0 26px;letter-spacing:-.035em}
+.dd-service-hero-copy .eyebrow,.dd-service-hero-copy .gold,.dd-service-hero-copy .dd-service-promise{color:#fff}
+.dd-service-hero-copy .dd-service-promise{font-size:1.08rem;line-height:1.7;max-width:540px;margin-bottom:28px}
+.dd-service-hero-copy .btn.fill{background:transparent;color:#fff;border-color:#fff}
+.dd-service-hero-copy .btn.fill:hover{background:#fff;color:#061321}
+.dd-service-hero-copy .dd-service-location{font-size:12px;line-height:1.6;color:#d0d9e0;max-width:500px}
+.dd-service-opening{font-size:1.12rem}
+.dd-service-proof-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,90px);align-items:center}
+.dd-service-proof-grid h2{font-size:clamp(2.1rem,4.2vw,4rem);line-height:1.15}
+.dd-service-proof{margin:0;min-width:0}
+.dd-service-proof>img{width:100%;height:clamp(350px,38vw,500px);object-fit:contain;background:#fff;padding:18px;border:1px solid #d5c9b5}
+.dd-service-proof figcaption{font-size:12px;line-height:1.6;color:#53606c;margin-top:14px}
+.dd-service-book-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;gap:18px;padding:24px;background:#eae4d9;border:1px solid #d5c9b5}
+.dd-service-book-pair img{width:100%;height:auto;box-shadow:8px 12px 22px #06132130}
+.dd-service-related a{transition:transform .35s,border-color .35s,box-shadow .35s}
+.dd-service-related a:hover{transform:translateY(-5px);box-shadow:0 12px 28px #06132114}
+.dd-service-closing{position:relative;isolation:isolate}
+.dd-service-closing::before{content:"";position:absolute;inset:0;background:rgba(4,13,23,.83);z-index:-1}
+.dd-service-closing p{color:#e0e6eb}
+@media(max-width:760px){
+ .hero.dd-service-hero{min-height:730px;align-items:flex-end}
+ .hero.dd-service-hero .hero-art{background-position:var(--hero-focus-mobile,64% center)}
+ .hero.dd-service-hero::before{background:linear-gradient(0deg,#061321 0%,rgba(6,19,33,.96) 30%,rgba(6,19,33,.52) 65%,rgba(6,19,33,.12) 100%)}
+ .hero.dd-service-hero .container{padding-top:250px;padding-bottom:60px}
+ .dd-service-hero-copy{width:100%;max-width:570px}
+ .dd-service-hero-copy h1{font-size:clamp(3.1rem,11vw,4.8rem);overflow-wrap:normal}
+ .dd-service-hero .dd-service-breadcrumbs{margin-bottom:28px}
+ .dd-service-hero-copy .dd-service-promise{font-size:1rem}
+ .dd-service-proof-grid{grid-template-columns:1fr;gap:30px}
+ .dd-service-proof>img{height:auto;max-height:480px;object-fit:contain}
+ .dd-service-book-pair{padding:18px;gap:14px}
+}
+@media(prefers-reduced-motion:reduce){.dd-service-related a{transition:none}.dd-service-related a:hover{transform:none}}
