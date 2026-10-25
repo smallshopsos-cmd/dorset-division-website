@@ -1,0 +1,17 @@
+/* Preserve the existing policy design, with readable forms and print output. */
+.dd-policy :is(p,li,address){overflow-wrap:anywhere}
+.dd-policy section{scroll-margin-top:100px}
+.dd-policy a{text-decoration:underline;text-underline-offset:3px}
+.dd-policy :is(a,button):focus-visible{outline:2px solid #f8ce81;outline-offset:4px}
+.dd-policy .dd-cookie-footer-link{color:#f2c97b;text-decoration:underline}
+@media print{
+ @page{margin:18mm}
+ body,.dd-policy{background:white!important;color:black!important}
+ .dd-policy{padding:0!important;min-height:0}
+ .dd-policy-inner{max-width:none}
+ .dd-policy :is(h1,h2,p,li,address,a,.dd-kicker,.dd-updated){color:black!important}
+ .dd-policy h1{font-size:28pt}.dd-policy h2{font-size:15pt;break-after:avoid}
+ .dd-policy :is(p,li,address){font-size:10pt;line-height:1.5}
+ .dd-policy .dd-note{background:white;border:1px solid #999}
+ .dd-policy-header,.dd-legal-footer,#dd-burt-root,.dd-cookie-banner,[data-dd-cookie-open]{display:none!important}
+}
