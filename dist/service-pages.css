@@ -67,3 +67,9 @@
  .dd-service-book-pair{padding:18px;gap:14px}
 }
 @media(prefers-reduced-motion:reduce){.dd-service-related a{transition:none}.dd-service-related a:hover{transform:none}}
+/* The full navigation does not fit between phone and narrow-tablet widths. */
+@media(min-width:761px) and (max-width:1000px){
+ .dd-service-page header .mobile-toggle{display:block}
+ .dd-service-page header nav{display:none;position:absolute;top:82px;left:0;right:0;background:#071421;flex-direction:column;padding:25px;align-items:stretch;gap:20px}
+ .dd-service-page header nav.open{display:flex}
+}
