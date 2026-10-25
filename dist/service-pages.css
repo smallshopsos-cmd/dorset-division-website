@@ -41,6 +41,7 @@
 .dd-service-hero-copy .btn.fill:hover{background:#fff;color:#061321}
 .dd-service-hero-copy .dd-service-location{font-size:12px;line-height:1.6;color:#d0d9e0;max-width:500px}
 .dd-service-opening{font-size:1.12rem}
+.light .dd-service-location{max-width:none;margin:0 0 28px;color:#53606c;font-size:.85rem;line-height:1.7}
 .dd-service-proof-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,90px);align-items:center}
 .dd-service-proof-grid h2{font-size:clamp(2.1rem,4.2vw,4rem);line-height:1.15}
 .dd-service-proof{margin:0;min-width:0}
