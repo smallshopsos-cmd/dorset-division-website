@@ -22,7 +22,8 @@ test('first visit and rejected optional consent never create a network-capable i
 test('consent loads exactly one isolated profile; withdrawal destroys it',()=>{
  const p=setup(false);p.choose(true);
  const frame=p.mount.querySelector('iframe');
- assert.ok(frame.srcdoc.includes('https://www.peopleperhour.com/hire/'));
+ assert.ok(frame.src.startsWith('https://www.peopleperhour.com/hire/widget/'));
+ assert.equal(frame.srcdoc,undefined);
  assert.ok(frame.attributes.sandbox.includes('allow-scripts'));
  assert.ok(!frame.attributes.sandbox.includes('allow-same-origin'));
  assert.equal(frame.referrerPolicy,'no-referrer');
