@@ -22,7 +22,8 @@
     frame.style.cssText = 'border:0;max-width:100%;background:transparent';
     frame.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox');
     frame.referrerPolicy = 'no-referrer';
-    frame.srcdoc = '<!doctype html><html lang="en"><meta charset="utf-8"><title>PeoplePerHour profile</title><body style="margin:0"><div id="pph-hireme"></div><script src="https://www.peopleperhour.com/hire/350038202/13691287.js?width=245&height=320&orientation=vertical&theme=dark&hourlies=1126840%2C1126988"></script></body></html>';
+    // The loader chooses HTTP inside about:srcdoc; load its HTTPS widget directly.
+    frame.src = 'https://www.peopleperhour.com/hire/widget/350038202/13691287?width=245&height=320&orientation=vertical&theme=dark&hourlies=1126840%2C1126988&u=dorsetdivision.co.uk';
     mount.append(frame);
   }
   window.addEventListener('dd:cookie-consent', update);
