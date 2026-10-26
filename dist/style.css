@@ -138,3 +138,6 @@ input,textarea,select,[tabindex],:target{scroll-margin-top:16px}
 .dd-skip-link{position:fixed;top:8px;left:12px;z-index:10000;padding:12px 18px;background:#f8ce81;color:#061321;font-weight:700;border:2px solid #061321;transform:translateY(-200%)}
 .dd-skip-link:focus{transform:none;outline:3px solid #fff;outline-offset:2px}
 @media print{.dd-skip-link{display:none}}
+
+/* Public social profiles, without third-party embeds. */
+.dd-footer-brand .dd-social-links{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:22px;align-items:center;justify-content:flex-start}.dd-footer-brand .dd-social-links a{display:inline-flex;align-items:center;min-height:44px;font:600 14px/1.4 'DM Sans',Arial,sans-serif;letter-spacing:0;text-transform:none;color:#efc77e;text-decoration:none;white-space:nowrap}.dd-footer-brand .dd-social-links a:hover{text-decoration:underline}.dd-footer-brand .dd-social-links a:focus-visible{outline:2px solid #efc77e;outline-offset:4px;border-radius:2px}
