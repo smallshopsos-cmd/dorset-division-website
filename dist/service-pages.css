@@ -74,3 +74,7 @@
  .dd-service-page header nav{display:none;position:absolute;top:82px;left:0;right:0;background:#071421;flex-direction:column;padding:25px;align-items:stretch;gap:20px}
  .dd-service-page header nav.open{display:flex}
 }
+
+/* Keep the support-rate range readable in the existing pricing cards on phones. */
+.price-strip .dd-rate-range{font-size:clamp(1.3rem,2.35vw,2rem)}
+.price-strip .dd-rate-range span{display:block}
