@@ -1,0 +1,13 @@
+.dd-trustpilot-section{background:#091625;color:#f7f5ef;border-block:1px solid #b896554d}
+.dd-trustpilot-section .dd-trustpilot-inner{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(28px,5vw,70px);align-items:center}
+.dd-trustpilot-section h2{font-size:clamp(2.6rem,5.1vw,4.5rem);line-height:1.06;margin:14px 0 22px;max-width:680px;color:#fff}
+.dd-trustpilot-section .dd-trustpilot-copy>p:not(.eyebrow){color:#d6dfe6;max-width:570px;line-height:1.7}
+.dd-trustpilot-section .btn.fill{margin-top:14px;white-space:normal;text-align:center}
+.dd-trustpilot-panel{background:#fff;color:#191919;border:1px solid #c9b17a;border-radius:16px;padding:clamp(24px,3vw,42px);min-width:0;box-shadow:0 18px 48px #0003;text-align:center}
+.dd-trustpilot-panel>p:first-child{font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;font-weight:700;color:#43554d;margin:0 0 14px}
+.dd-trustpilot-widget{min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.dd-trustpilot-widget p{font-size:.9rem;line-height:1.6;margin:0;color:#43554d}
+.dd-trustpilot-placeholder-title{font-size:clamp(2rem,4vw,3rem);line-height:1.1;font-family:Arial,sans-serif;font-weight:700;color:#191919}
+.dd-trustpilot-widget .btn{color:#091625;background:#fff;border-color:#65756c;white-space:normal}
+.dd-trustpilot-panel .dd-trustpilot-note{font-size:.79rem;line-height:1.5;color:#43554d;margin:16px 0 0}
+@media(max-width:760px){.dd-trustpilot-section .dd-trustpilot-inner{grid-template-columns:1fr}.dd-trustpilot-section h2{max-width:560px}.dd-trustpilot-panel{width:100%;box-sizing:border-box}.dd-trustpilot-section .btn.fill{max-width:100%;box-sizing:border-box}}
