@@ -1,0 +1,6 @@
+Social profile icons: Font Awesome Free by Fonticons, Inc.
+Source: https://github.com/FortAwesome/Font-Awesome/tree/6.x/svgs/brands
+Icons used: facebook-f, instagram, tiktok, linkedin-in.
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+SVG paths are unchanged; icons are packaged into a shared symbol sprite.
