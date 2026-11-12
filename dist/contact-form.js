@@ -10,7 +10,7 @@
       if (config.enabled === true) {
         direct = true;
         button.textContent = 'Send enquiry ↗';
-        note.replaceChildren('Your enquiry is sent using Resend. Please do not include passwords, payment details or sensitive information. ');
+        note.replaceChildren('Your enquiry is sent directly to Marnie. You’ll receive a reply at the email address you provide. Please do not include passwords, payment details or sensitive information. ');
         const privacy = document.createElement('a'); privacy.href = '/privacy'; privacy.textContent = 'Privacy policy'; note.append(privacy);
       }
     }).catch(()=>{});
