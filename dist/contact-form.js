@@ -36,6 +36,7 @@
       const response = await fetch('/api/contact', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...payload,requestId}),signal:AbortSignal.timeout(16000)});
       const receipt = await response.json().catch(()=>({}));
       if (!response.ok || receipt.ok !== true) throw new Error(receipt.error || 'Sending could not be confirmed. Please email marnie@dorsetdivision.co.uk.');
+      document.dispatchEvent?.(new CustomEvent('dd:enquiry-submitted'));
       form.reset(); previousPayload = ''; requestId = '';
       note.textContent = 'Thank you — your enquiry has been submitted. You can follow up at marnie@dorsetdivision.co.uk.';
     } catch (error) {
