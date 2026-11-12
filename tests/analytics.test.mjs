@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
+import {readFile,readdir} from 'node:fs/promises';
 import vm from 'node:vm';
 import analytics from '../integrations/analytics/cloudflare-worker.mjs';
 
@@ -24,6 +24,16 @@ test('storage and rate limit failures do not pretend to collect an event',async(
  assert.equal((await analytics.fetch(req(valid),{})).status,503);
 });
 const source=await readFile(new URL('../dist/enquiry-analytics.js',import.meta.url),'utf8');
+test('every measured page loads consent controls before analytics',async()=>{
+ const root=new URL('../dist/',import.meta.url);
+ for(const name of await readdir(root,{recursive:true})){
+  if(!name.endsWith('.html'))continue;
+  const text=await readFile(new URL(name,root),'utf8');
+  if(!text.includes('enquiry-analytics.js'))continue;
+  assert.ok(text.includes('cookie-consent.js'),name);
+  assert.ok(text.indexOf('cookie-consent.js')<text.indexOf('enquiry-analytics.js'),name);
+ }
+});
 test('no measurement or attribution storage before consent; withdrawal stops it',()=>{
  let allowed=false;const sent=[],stored=new Map(),events={},docEvents={};
  const context={window:{DDCookieConsent:{hasAnalyticsConsent:()=>allowed},addEventListener:(name,fn)=>events[name]=fn},document:{referrer:'https://www.google.co.uk/search?q=private',querySelector:()=>null,addEventListener:(name,fn)=>docEvents[name]=fn},location:{pathname:'/business-strategy-research',search:'',origin:'https://dorsetdivision.co.uk'},sessionStorage:{getItem:k=>stored.get(k),setItem:(k,v)=>stored.set(k,v),removeItem:k=>stored.delete(k)},URL,URLSearchParams,fetch:(_u,options)=>{sent.push(JSON.parse(options.body));return Promise.resolve();}};
