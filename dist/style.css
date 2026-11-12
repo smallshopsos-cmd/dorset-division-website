@@ -150,3 +150,26 @@ input,textarea,select,[tabindex],:target{scroll-margin-top:16px}
 @media(max-width:760px){.dd-service-directory a{min-height:110px}.dd-cookie-open #dd-burt-launch{padding:6px 12px}.dd-cookie-open #dd-burt-launch .dd-burt-avatar{width:32px;height:32px}.dd-cookie-open #dd-burt-panel{bottom:60px;max-height:calc(100dvh - var(--dd-cookie-offset,0px) - 80px)}}
 
 @media(max-width:760px){.dd-cookie-open .home-page .hero>.container{padding-top:32px}.dd-cookie-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.dd-cookie-actions button{padding:10px 6px;font-size:12px}}
+
+/* Homepage service editorial: a lead speciality and six balanced supporting routes. */
+.home-page .dd-service-editorial{background:radial-gradient(ellipse at 5% 5%,#132c40 0%,#081927 50%,#061321 100%);color:#f8f6f1;border-top:1px solid #d9b76b55;border-bottom:1px solid #d9b76b33;padding:96px 0}
+.home-page .dd-service-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:68px;align-items:start}
+.home-page .dd-service-intro .eyebrow{color:#e5bc78;font-size:10px;letter-spacing:.22em;margin-bottom:25px}
+.home-page .dd-service-intro h2{font-size:clamp(2.6rem,4.2vw,4.3rem);line-height:1.1;margin:0 0 26px;letter-spacing:-.025em}
+.home-page .dd-service-intro>p:not(.eyebrow){color:#ced7df;max-width:350px;font-size:16px;line-height:1.8}
+.home-page .dd-service-intro .dd-service-location{font-size:13px!important;color:#9fafbd!important;margin:25px 0 30px}
+.home-page .dd-service-intro .btn{color:#f3d7a6;font-size:10px;padding:13px 19px;letter-spacing:.1em}
+.home-page .dd-service-directory{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px;margin:0}
+.home-page .dd-service-directory a{display:grid;grid-template-columns:22px minmax(0,1fr) 18px;align-items:start;gap:11px;padding:25px 0;min-height:144px;border:0;border-top:1px solid #b0bdc333;border-radius:0;background:transparent;color:#f8f6f1;text-decoration:none;box-shadow:none;transition:border-color .25s,background-color .25s}
+.home-page .dd-service-directory a:first-child{grid-column:1/-1;min-height:130px;padding:26px 22px;margin-bottom:10px;background:#ffffff06;border:1px solid #c5a16366;grid-template-columns:22px minmax(0,1fr) 22px}
+.home-page .dd-service-directory a strong{display:block;font:500 16px/1.45 'DM Sans',Arial,sans-serif;letter-spacing:0;margin:0 0 11px;color:#fff}
+.home-page .dd-service-directory a:first-child strong{font-family:'Italiana',Georgia,serif;font-size:30px;line-height:1.2;font-weight:400}
+.home-page .dd-service-directory a p{margin:0;color:#b9c6d0;font-size:13px;line-height:1.7}
+.home-page .dd-service-directory a .dd-service-index{position:static;inset:auto;color:#d4ad6f;font-size:10px;letter-spacing:.1em;padding-top:4px;font-weight:500}
+.home-page .dd-service-directory a svg{color:#e1b775;margin-top:3px;width:18px;height:18px;transition:transform .25s}
+.home-page .dd-service-directory a:hover{transform:none;background:#ffffff05;border-color:#d8b477;text-decoration:none;box-shadow:none}.home-page .dd-service-directory a:hover svg{transform:translate(2px,-2px)}
+.home-page .dd-service-directory a:focus-visible{outline:2px solid #f5d49a;outline-offset:6px}
+@media(max-width:1000px){.home-page .dd-service-layout{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:35px}.home-page .dd-service-directory a{gap:8px;grid-template-columns:18px minmax(0,1fr) 16px}.home-page .dd-service-directory a strong{font-size:14px}}
+@media(max-width:760px){.home-page .dd-service-editorial{padding:60px 0}.home-page .dd-service-layout{grid-template-columns:1fr;gap:40px}.home-page .dd-service-intro h2{font-size:clamp(2.8rem,10vw,3.6rem)}.home-page .dd-service-intro>p:not(.eyebrow){max-width:520px}.home-page .dd-service-intro .dd-service-location{margin:20px 0}.home-page .dd-service-directory{gap:0 20px}.home-page .dd-service-directory a{min-height:150px}.home-page .dd-service-directory a:first-child{padding:22px 18px}.home-page .dd-service-directory a:first-child strong{font-size:27px}}
+@media(max-width:440px){.home-page .dd-service-directory{grid-template-columns:1fr}.home-page .dd-service-directory a{min-height:0;padding:23px 0;grid-template-columns:22px minmax(0,1fr) 18px;gap:12px}.home-page .dd-service-directory a strong{font-size:16px}.home-page .dd-service-directory a p{font-size:14px}.home-page .dd-service-directory a:first-child{grid-column:auto}}
+@media(prefers-reduced-motion:reduce){.home-page .dd-service-directory a,.home-page .dd-service-directory a svg{transition:none}.home-page .dd-service-directory a:hover svg{transform:none}}
